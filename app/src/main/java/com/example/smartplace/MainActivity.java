@@ -3,9 +3,12 @@ package com.example.smartplace;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Fragment content = new MainFrame();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Intent nuevapartida_button = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(nuevapartida_button);
+                //Fragment content = new MainFrame();
+                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 //transaction.replace(R.id.FCV1, content).commit();
             }
         }, Delay);
