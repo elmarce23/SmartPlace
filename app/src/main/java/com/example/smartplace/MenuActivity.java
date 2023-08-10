@@ -39,7 +39,31 @@ public class MenuActivity extends AppCompatActivity {
         c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                creaMensaje(isChecked);
+                creaMensaje("1", isChecked);
+                //connector.putEstado(2); // Debe reemplazar a isChecked
+            }
+        });
+
+        c2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                creaMensaje("1", isChecked);
+                //connector.putEstado(2); // Debe reemplazar a isChecked
+            }
+        });
+
+        c3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                creaMensaje("1", isChecked);
+                //connector.putEstado(2); // Debe reemplazar a isChecked
+            }
+        });
+
+        c4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                creaMensaje("1", isChecked);
                 //connector.putEstado(2); // Debe reemplazar a isChecked
             }
         });
@@ -53,12 +77,14 @@ public class MenuActivity extends AppCompatActivity {
         c4 = findViewById(R.id.switch4);
     }
 
-    protected void creaMensaje(boolean act){
+    protected void creaMensaje(String id, boolean act){
         String cat = act ? "Encendido" : "Apagado";
+        putDis(id, cat);
         Toast.makeText(getApplicationContext(), "Dispositivo:name " + cat, Toast.LENGTH_LONG).show();
     }
 
     public void putDis(String id, String edo){
+        edo = edo.equals("Encendido") ? "1" : "0";
         mAPIService.putDis(id, edo).enqueue(new Callback<Dispositivo>() {
             @Override
             public void onResponse(Call<Dispositivo> call, Response<Dispositivo> response) {
