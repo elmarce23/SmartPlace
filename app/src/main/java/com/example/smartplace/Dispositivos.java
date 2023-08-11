@@ -42,12 +42,11 @@ public class Dispositivos extends AppCompatActivity {
         super.onResume();
 
         verificarEstadoBT();
-
         //Inicializa el List
         arrayAdapter = new ArrayAdapter(this, R.layout.activity_dispositivos);
         lista = (ListView) findViewById(R.id.listaDis);
         lista.setAdapter(arrayAdapter);
-        lista.setOnClickListener((View.OnClickListener) mclickListener);
+        lista.setOnItemClickListener(mclickListener);
 
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
 
