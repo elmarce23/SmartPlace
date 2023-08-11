@@ -51,27 +51,20 @@ public class Dispositivos extends AppCompatActivity {
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
 
-        if(pairedDevices.size() > 0){
-            for(BluetoothDevice device : pairedDevices)
-                arrayAdapter.add(device.getName() + "\n" + device.getAddress());
-        }
+            Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
 
+            if (pairedDevices.size() > 0) {
+                for (BluetoothDevice device : pairedDevices) {
+                    arrayAdapter.add(device.getName() + "\n" + device.getAddress());
+                }
+            }
+        }
     }
 
     private AdapterView.OnItemClickListener mclickListener = new AdapterView.OnItemClickListener(){
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemClick(AdapterView av, View view, int position, long id) {
             String info = ((TextView) view).getText().toString();
             String address = info.substring(info.length() - 17);
 
